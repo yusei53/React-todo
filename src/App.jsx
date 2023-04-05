@@ -3,7 +3,8 @@ import "./styles.css"
 
 export const App = () => {
 
-  const [incomplete, setIncomplete] = useState(["aaaa", "bbbb"])
+  const [incomplete, setIncomplete] = useState(["aaaa", "bbbb"]);
+  const [complete, setComplete] = useState(["cccc"]);
 
   return (
     <>
@@ -14,26 +15,28 @@ export const App = () => {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          <div className="list-row">
-            <li className="task">aaaa</li>
+          {incomplete.map((todo) => {
+            return (
+           <div key={todo} className="list-row">
+            <li className="task">{todo}</li>
             <button>完了</button>
             <button>削除</button>
-          </div>
-          <div className="list-row">
-            <li className="task">bbbb</li>
-            <button>完了</button>
-            <button>削除</button>
-          </div>
+          </div>             
+            )
+          })}
         </ul>
       </div>
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          <div className="list-row">
-            <li className="task">aaaa</li>
-            <button>完了</button>
-            <button>削除</button>
+          {complete.map((todo) => {
+            return (
+          <div key = {todo} className="list-row">
+            <li className="task">{todo}</li>
+            <button>戻す</button>
           </div>
+            )
+          })}
         </ul>
       </div>
     </>
